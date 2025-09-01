@@ -14,6 +14,8 @@ public class BasketballPlayer : MonoBehaviour
     public Transform ballSpawnPos;
     public float launchForce = 10f;
     public float launchAngle = 45f;
+    
+    public BasketballManager manager;
     void Update()
     {
         // 마우스의 X, Y축 이동 값을 가져옵니다.
@@ -45,19 +47,16 @@ public class BasketballPlayer : MonoBehaviour
     private void ShootTest()
     {
         GameObject spawnedBall = Instantiate(ball, ballSpawnPos.position, ballSpawnPos.rotation);
+        spawnedBall.GetComponent<BallScript>().SetObject(manager); // 농구 게임 매니저 넣어줌
         Rigidbody rb = spawnedBall.GetComponent<Rigidbody>();
       
         Vector3 forwardDirection = transform.forward;
     
-        // 위쪽 방향 벡터를 가져옵니다.
         Vector3 upwardDirection = transform.up;
 
-        // 정면 방향과 위쪽 방향을 결합하여 최종 발사 방향 벡터를 만듭니다.
-        // launchAngle을 라디안으로 변환하여 사용합니다.
         float angleInRadians = launchAngle * Mathf.Deg2Rad;
         Vector3 launchDirection = (forwardDirection + upwardDirection * Mathf.Tan(angleInRadians)).normalized;
 
-        // Rigidbody에 힘을 가합니다.
         rb.AddForce(launchDirection * launchForce, ForceMode.Impulse);
         Destroy(spawnedBall, 4f);
       

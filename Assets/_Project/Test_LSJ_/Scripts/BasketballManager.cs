@@ -25,11 +25,21 @@ public class BasketballManager : MonoBehaviour
     public Transform backPos;
     
     public GameObject basket;
+    public GameObject ballGate;
     private Coroutine horizontalCoroutine;
     private Coroutine backMoveCoroutine;
     
     private Tween horizontalTween;
     private Tween backMoveTween;
+    
+    public AudioSource point2Audio;
+    public AudioSource point3Audio;
+    public AudioSource startAudio;
+    public AudioSource endAudio;
+
+    public Transform ballSpawnPos;
+    public GameObject ball;
+    
 
     private void Start()
     {
@@ -57,10 +67,12 @@ public class BasketballManager : MonoBehaviour
             if (time < 20)
             {
                 score += 3;
+                point3Audio.Play();
             }
             else
             {
                 score += 2;
+                point2Audio.Play();
             }
         }
 
@@ -69,6 +81,7 @@ public class BasketballManager : MonoBehaviour
 
     IEnumerator StageTimer()
     {
+        ballGate.transform.DORotate(new Vector3(-15f, 0, 0), 1.0f);
         stageText.text = stage.ToString();
         if (stage != 1)
         {
@@ -78,6 +91,11 @@ public class BasketballManager : MonoBehaviour
             }
             else if (stage == 3)
             {
+                backMoveCoroutine = StartCoroutine(BackMove());
+            }
+            else
+            {
+                horizontalCoroutine = StartCoroutine(HorizontalMove());
                 backMoveCoroutine = StartCoroutine(BackMove());
             }
         }
@@ -111,11 +129,15 @@ public class BasketballManager : MonoBehaviour
             backMoveTween.Kill();
             backMoveCoroutine = null;
         }
+        
         basket.transform.DOMove(defaultPos.position, 1f);
+        endAudio.Play();
+        ballGate.transform.DORotate(new Vector3(75f, 0, 0), 1.0f);
     }
 
     IEnumerator BetweenStageTimer()
     {
+        
         time = 7f;
         while (time > 0)
         {
@@ -133,7 +155,7 @@ public class BasketballManager : MonoBehaviour
         bool needToGoLeft = true;
         bool needToGoRight = false;
         bool isMoving = false;
-        float duration = 4f;
+        float duration = 3f;
         while (true)
         {
             if (isMoving == false)
@@ -171,7 +193,7 @@ public class BasketballManager : MonoBehaviour
         bool needToGoBack = true;
         bool needToGoFront = false;
         bool isMoving = false;
-        float duration = 4f;
+        float duration = 3f;
         while (true)
         {
             if (isMoving == false)
@@ -202,6 +224,11 @@ public class BasketballManager : MonoBehaviour
 
             yield return null;
         }
+    }
+
+    public void SpawnBall()
+    {
+        Instantiate(ball, ballSpawnPos.position, ballSpawnPos.rotation);
     }
     
 }

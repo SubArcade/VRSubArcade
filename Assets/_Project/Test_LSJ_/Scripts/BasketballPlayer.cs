@@ -34,12 +34,12 @@ public class BasketballPlayer : MonoBehaviour
         // 계산된 회전 값을 카메라에 적용합니다.
         // Y축 회전은 transform.localRotation을 사용해 현재 회전값에 더하고,
         // X축 회전은 새로운 Quaternion을 만들어 적용합니다.
-        transform.localRotation = Quaternion.Euler(rotationX, rotationY, 0f);
+        //transform.localRotation = Quaternion.Euler(rotationX, rotationY, 0f);
         
         
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            ShootTest();   
+           // ShootTest();   
         }
         
         
@@ -58,7 +58,7 @@ public class BasketballPlayer : MonoBehaviour
         Vector3 launchDirection = (forwardDirection + upwardDirection * Mathf.Tan(angleInRadians)).normalized;
 
         rb.AddForce(launchDirection * launchForce, ForceMode.Impulse);
-        Destroy(spawnedBall, 4f);
+        //Destroy(spawnedBall, 4f);
       
     }
 }

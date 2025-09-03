@@ -10,6 +10,7 @@ TagManager:
   - BallEndTrigger
   - BasketballManager
   - StartButton
+  - Bullet
   layers:
   - Default
   - TransparentFX
@@ -30,7 +31,7 @@ TagManager:
   - 
   - 
   - ball
-  - 
+  - Target
   - 
   - 
   - 

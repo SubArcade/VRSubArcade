@@ -11,6 +11,7 @@ public class BasketballManager : MonoBehaviour
     private int score = 0;
 
     private int stage = 1;
+    private bool isPlaying = false;
     private bool isStageStarted = false;
 
     public float stageDurationTime = 60f;
@@ -47,7 +48,25 @@ public class BasketballManager : MonoBehaviour
         leftPos.SetParent(null);
         rightPos.SetParent(null);
         backPos.SetParent(null);
-        scoreText.text = score.ToString();
+        score = 0;
+        time = 0;
+        stage = 1;
+        scoreText.text  = score.ToString();
+        timeText.text = time.ToString();
+        stageText.text = stage.ToString();
+        //StartCoroutine(BetweenStageTimer());
+    }
+
+    public void InitializeGame()
+    {
+        if (isPlaying == true) return;
+        isPlaying = true;
+        score = 0;
+        time = 0;
+        stage = 1;
+        scoreText.text  = score.ToString();
+        timeText.text = time.ToString();
+        stageText.text = stage.ToString();
         StartCoroutine(BetweenStageTimer());
     }
 
@@ -93,11 +112,6 @@ public class BasketballManager : MonoBehaviour
             {
                 backMoveCoroutine = StartCoroutine(BackMove());
             }
-            else
-            {
-                horizontalCoroutine = StartCoroutine(HorizontalMove());
-                backMoveCoroutine = StartCoroutine(BackMove());
-            }
         }
         isStageStarted = true;
         time = stageDurationTime;
@@ -113,6 +127,10 @@ public class BasketballManager : MonoBehaviour
         {
             stage++;
             StartCoroutine(BetweenStageTimer());
+        }
+        else
+        {
+            isPlaying = false;
         }
 
         isStageStarted = false;

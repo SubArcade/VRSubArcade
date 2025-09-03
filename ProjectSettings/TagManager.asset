@@ -9,6 +9,7 @@ TagManager:
   - BasketballTrigger2
   - BallEndTrigger
   - BasketballManager
+  - StartButton
   layers:
   - Default
   - TransparentFX

@@ -11,6 +11,7 @@ TagManager:
   - BasketballManager
   - StartButton
   - Bullet
+  - Wall
   layers:
   - Default
   - TransparentFX
@@ -29,9 +30,9 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - ball
   - Target
+  - ball
+  - 
   - 
   - 
   - 

@@ -201,139 +201,6 @@ Transform:
   - {fileID: 2910539405734254178}
   m_Father: {fileID: 3871387230218805441}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &534978154738934250
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5651795931464785703}
-  - component: {fileID: 7351460820106661425}
-  m_Layer: 0
-  m_Name: XR Device Simulator
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &5651795931464785703
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 534978154738934250}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.0022979, y: -3.9616733, z: -3.5686588}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 3706816679062638721}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7351460820106661425
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 534978154738934250}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b34befe5d0cbb642bb5d09104a47160, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_DeviceSimulatorActionAsset: {fileID: -944628639613478452, guid: da2b439d1a2de5c46a4f428f8cf4fe19, type: 3}
-  m_ControllerActionAsset: {fileID: -944628639613478452, guid: 0be0028c24f2a4c14a96b6aa39055933, type: 3}
-  m_KeyboardXTranslateAction: {fileID: -2435995061748527091, guid: da2b439d1a2de5c46a4f428f8cf4fe19, type: 3}
-  m_KeyboardYTranslateAction: {fileID: 4091624078112751379, guid: da2b439d1a2de5c46a4f428f8cf4fe19, type: 3}
-  m_KeyboardZTranslateAction: {fileID: 8957443236229058949, guid: da2b439d1a2de5c46a4f428f8cf4fe19, type: 3}
-  m_ManipulateLeftAction: {fileID: 3215650258570939094, guid: da2b439d1a2de5c46a4f428f8cf4fe19, type: 3}
-  m_ManipulateRightAction: {fileID: 138396950478516224, guid: da2b439d1a2de5c46a4f428f8cf4fe19, type: 3}
-  m_ToggleManipulateLeftAction: {fileID: 2547216639932606815, guid: da2b439d1a2de5c46a4f428f8cf4fe19, type: 3}
-  m_ToggleManipulateRightAction: {fileID: 743384497930276301, guid: da2b439d1a2de5c46a4f428f8cf4fe19, type: 3}
-  m_ToggleManipulateBodyAction: {fileID: -658012382136555628, guid: da2b439d1a2de5c46a4f428f8cf4fe19, type: 3}
-  m_ManipulateHeadAction: {fileID: -3619485213038975404, guid: da2b439d1a2de5c46a4f428f8cf4fe19, type: 3}
-  m_HandControllerModeAction: {fileID: -6730069882215067947, guid: da2b439d1a2de5c46a4f428f8cf4fe19, type: 3}
-  m_CycleDevicesAction: {fileID: -7837977739890211585, guid: da2b439d1a2de5c46a4f428f8cf4fe19, type: 3}
-  m_StopManipulationAction: {fileID: 1698315126802870675, guid: da2b439d1a2de5c46a4f428f8cf4fe19, type: 3}
-  m_MouseDeltaAction: {fileID: -1273072440521047205, guid: da2b439d1a2de5c46a4f428f8cf4fe19, type: 3}
-  m_MouseScrollAction: {fileID: 4546399164687744209, guid: da2b439d1a2de5c46a4f428f8cf4fe19, type: 3}
-  m_RotateModeOverrideAction: {fileID: -8754530952185592012, guid: da2b439d1a2de5c46a4f428f8cf4fe19, type: 3}
-  m_ToggleMouseTransformationModeAction: {fileID: 3100586429251580691, guid: da2b439d1a2de5c46a4f428f8cf4fe19, type: 3}
-  m_NegateModeAction: {fileID: 1882878426541990298, guid: da2b439d1a2de5c46a4f428f8cf4fe19, type: 3}
-  m_XConstraintAction: {fileID: -8086843181801629294, guid: da2b439d1a2de5c46a4f428f8cf4fe19, type: 3}
-  m_YConstraintAction: {fileID: 5691479700773754790, guid: da2b439d1a2de5c46a4f428f8cf4fe19, type: 3}
-  m_ZConstraintAction: {fileID: 1644704167276153141, guid: da2b439d1a2de5c46a4f428f8cf4fe19, type: 3}
-  m_ResetAction: {fileID: -2638007419058092452, guid: da2b439d1a2de5c46a4f428f8cf4fe19, type: 3}
-  m_ToggleCursorLockAction: {fileID: -2382836779261746822, guid: da2b439d1a2de5c46a4f428f8cf4fe19, type: 3}
-  m_ToggleDevicePositionTargetAction: {fileID: -6716103979869350223, guid: da2b439d1a2de5c46a4f428f8cf4fe19, type: 3}
-  m_TogglePrimary2DAxisTargetAction: {fileID: -7682297331024740639, guid: da2b439d1a2de5c46a4f428f8cf4fe19, type: 3}
-  m_ToggleSecondary2DAxisTargetAction: {fileID: 1155009490345466815, guid: da2b439d1a2de5c46a4f428f8cf4fe19, type: 3}
-  m_Axis2DAction: {fileID: 8275859971367427353, guid: 0be0028c24f2a4c14a96b6aa39055933, type: 3}
-  m_RestingHandAxis2DAction: {fileID: 6756245720351945193, guid: 0be0028c24f2a4c14a96b6aa39055933, type: 3}
-  m_GripAction: {fileID: 5667446173830999989, guid: 0be0028c24f2a4c14a96b6aa39055933, type: 3}
-  m_TriggerAction: {fileID: -2439264783773714294, guid: 0be0028c24f2a4c14a96b6aa39055933, type: 3}
-  m_PrimaryButtonAction: {fileID: -3599823989380923159, guid: 0be0028c24f2a4c14a96b6aa39055933, type: 3}
-  m_SecondaryButtonAction: {fileID: -8069514856583376848, guid: 0be0028c24f2a4c14a96b6aa39055933, type: 3}
-  m_MenuAction: {fileID: 4116954447336496447, guid: 0be0028c24f2a4c14a96b6aa39055933, type: 3}
-  m_Primary2DAxisClickAction: {fileID: 637922521265743415, guid: 0be0028c24f2a4c14a96b6aa39055933, type: 3}
-  m_Secondary2DAxisClickAction: {fileID: -8358032100899166728, guid: 0be0028c24f2a4c14a96b6aa39055933, type: 3}
-  m_Primary2DAxisTouchAction: {fileID: 2883175194488637904, guid: 0be0028c24f2a4c14a96b6aa39055933, type: 3}
-  m_Secondary2DAxisTouchAction: {fileID: -851591506940895311, guid: 0be0028c24f2a4c14a96b6aa39055933, type: 3}
-  m_PrimaryTouchAction: {fileID: -4201894270441249665, guid: 0be0028c24f2a4c14a96b6aa39055933, type: 3}
-  m_SecondaryTouchAction: {fileID: 5188782311186578770, guid: 0be0028c24f2a4c14a96b6aa39055933, type: 3}
-  m_HandActionAsset: {fileID: -944628639613478452, guid: b72ab2a46d9094be38774d023beb4d34, type: 3}
-  m_RestingHandExpressionCapture: {fileID: 11400000, guid: 5be099e6e6012c244bb41881b6c0ea07, type: 2}
-  m_SimulatedHandExpressions:
-  - m_Name: Poke
-    m_ToggleAction: {fileID: -5976510165261225158, guid: b72ab2a46d9094be38774d023beb4d34, type: 3}
-    m_Capture: {fileID: 11400000, guid: 95c319715e9d2644da8ae09af8ccfee6, type: 2}
-  - m_Name: Pinch
-    m_ToggleAction: {fileID: -8306000708137014372, guid: b72ab2a46d9094be38774d023beb4d34, type: 3}
-    m_Capture: {fileID: 11400000, guid: d6e15a52475c2564ca7d2977fdece24a, type: 2}
-  - m_Name: Grab
-    m_ToggleAction: {fileID: -4373459253818063952, guid: b72ab2a46d9094be38774d023beb4d34, type: 3}
-    m_Capture: {fileID: 11400000, guid: 3861c298d39c60c44b16920421444875, type: 2}
-  - m_Name: Thumb
-    m_ToggleAction: {fileID: -741559036651486339, guid: b72ab2a46d9094be38774d023beb4d34, type: 3}
-    m_Capture: {fileID: 11400000, guid: 9d8c9c84da35a7c4c89efd57343c1df8, type: 2}
-  - m_Name: Open
-    m_ToggleAction: {fileID: -9192331390769138535, guid: b72ab2a46d9094be38774d023beb4d34, type: 3}
-    m_Capture: {fileID: 11400000, guid: 05293ab353dc8a747a36ed129311686d, type: 2}
-  - m_Name: Fist
-    m_ToggleAction: {fileID: 6469712917552426222, guid: b72ab2a46d9094be38774d023beb4d34, type: 3}
-    m_Capture: {fileID: 11400000, guid: 2a7c8ca0feac7cc44a5c225164ef311d, type: 2}
-  m_CameraTransform: {fileID: 0}
-  m_KeyboardTranslateSpace: 0
-  m_MouseTranslateSpace: 2
-  m_KeyboardXTranslateSpeed: 0.2
-  m_KeyboardYTranslateSpeed: 0.2
-  m_KeyboardZTranslateSpeed: 0.2
-  m_KeyboardBodyTranslateMultiplier: 5
-  m_MouseXTranslateSensitivity: 0.0004
-  m_MouseYTranslateSensitivity: 0.0004
-  m_MouseScrollTranslateSensitivity: 0.0002
-  m_MouseXRotateSensitivity: 0.2
-  m_MouseYRotateSensitivity: 0.2
-  m_MouseScrollRotateSensitivity: 0.05
-  m_MouseYRotateInvert: 0
-  m_DesiredCursorLockMode: 1
-  m_RemoveOtherHMDDevices: 1
-  m_HandTrackingCapability: 1
-  m_DeviceSimulatorUI: {fileID: 7662076761675301960, guid: ead42e0472b7547fbba6c229aeaf37d3, type: 3}
-  m_GripAmount: 1
-  m_TriggerAmount: 1
-  m_HMDIsTracked: 1
-  m_HMDTrackingState: 3
-  m_LeftControllerIsTracked: 1
-  m_LeftControllerTrackingState: 3
-  m_RightControllerIsTracked: 1
-  m_RightControllerTrackingState: 3
-  m_LeftHandIsTracked: 1
-  m_RightHandIsTracked: 1
 --- !u!1 &744409800381345565
 GameObject:
   m_ObjectHideFlags: 0
@@ -1364,7 +1231,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: faa420f94a3e39849b8610782726ca27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  throwablePrefabs: []
+  throwablePrefabs:
+  - {fileID: 3024740437751587077, guid: fcb14621c1dc261459c477a258d80e07, type: 3}
+  - {fileID: 3577866158095059863, guid: ca2f264cc6dc2274f9ed0ee3a281571b, type: 3}
+  - {fileID: 7140906994618402297, guid: c3e11fc0ac3054b43a324f054173c988, type: 3}
+  - {fileID: 2335796611620327524, guid: dd7d63f949510a74ebb7840712e4d001, type: 3}
+  - {fileID: 6481946875421893891, guid: 441759cd52216fd4d97ded1ddeaf6f5d, type: 3}
+  - {fileID: 9117476750524519049, guid: 598ce354eea371740a14c4bd2d3605e7, type: 3}
+  - {fileID: 7234103713604320633, guid: 7d3181d1023fe024d9b6a787f05bcfb3, type: 3}
+  - {fileID: 3090400146159552116, guid: 833f2f65fcc6ec64c937a36ee44e85dc, type: 3}
   spawnBox: {fileID: 5307159953562777691}
   spawnCount: 20
   boxSize: {x: 1, y: 1, z: 1}
@@ -4300,7 +4175,7 @@ MonoBehaviour:
   maxHealth: 20
   BoomParticle: {fileID: 575319445162951685, guid: cfb92a413a1beb24996b3935f4911d55, type: 3}
   moveSpeed: 2
-  moveRange: 8
+  moveRange: 4
   moveInterval: 1
   healthText: {fileID: 6163125089752157032}
   boomSound: {fileID: 8300000, guid: 7ecf46f4948f3774bafe482a40a37da0, type: 3}
@@ -5651,7 +5526,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -6532,7 +6407,6 @@ Transform:
   - {fileID: 5307159953562777691}
   - {fileID: 8740102390932750558}
   - {fileID: 1672582236596900149}
-  - {fileID: 5651795931464785703}
   - {fileID: 6140263895948008618}
   - {fileID: 7742130567524920070}
   - {fileID: 7040144444866967612}

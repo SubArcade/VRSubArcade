@@ -170,46 +170,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4979889579517808772, guid: 2c4f9847306684841a2e38eab38b224a, type: 3}
-      propertyPath: moveRange
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 5268245351278849793, guid: 2c4f9847306684841a2e38eab38b224a, type: 3}
-      propertyPath: throwablePrefabs.Array.size
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 5268245351278849793, guid: 2c4f9847306684841a2e38eab38b224a, type: 3}
-      propertyPath: throwablePrefabs.Array.data[0]
-      value: 
-      objectReference: {fileID: 3024740437751587077, guid: fcb14621c1dc261459c477a258d80e07, type: 3}
-    - target: {fileID: 5268245351278849793, guid: 2c4f9847306684841a2e38eab38b224a, type: 3}
-      propertyPath: throwablePrefabs.Array.data[1]
-      value: 
-      objectReference: {fileID: 3577866158095059863, guid: ca2f264cc6dc2274f9ed0ee3a281571b, type: 3}
-    - target: {fileID: 5268245351278849793, guid: 2c4f9847306684841a2e38eab38b224a, type: 3}
-      propertyPath: throwablePrefabs.Array.data[2]
-      value: 
-      objectReference: {fileID: 7140906994618402297, guid: c3e11fc0ac3054b43a324f054173c988, type: 3}
-    - target: {fileID: 5268245351278849793, guid: 2c4f9847306684841a2e38eab38b224a, type: 3}
-      propertyPath: throwablePrefabs.Array.data[3]
-      value: 
-      objectReference: {fileID: 2335796611620327524, guid: dd7d63f949510a74ebb7840712e4d001, type: 3}
-    - target: {fileID: 5268245351278849793, guid: 2c4f9847306684841a2e38eab38b224a, type: 3}
-      propertyPath: throwablePrefabs.Array.data[4]
-      value: 
-      objectReference: {fileID: 6481946875421893891, guid: 441759cd52216fd4d97ded1ddeaf6f5d, type: 3}
-    - target: {fileID: 5268245351278849793, guid: 2c4f9847306684841a2e38eab38b224a, type: 3}
-      propertyPath: throwablePrefabs.Array.data[5]
-      value: 
-      objectReference: {fileID: 9117476750524519049, guid: 598ce354eea371740a14c4bd2d3605e7, type: 3}
-    - target: {fileID: 5268245351278849793, guid: 2c4f9847306684841a2e38eab38b224a, type: 3}
-      propertyPath: throwablePrefabs.Array.data[6]
-      value: 
-      objectReference: {fileID: 7234103713604320633, guid: 7d3181d1023fe024d9b6a787f05bcfb3, type: 3}
-    - target: {fileID: 5268245351278849793, guid: 2c4f9847306684841a2e38eab38b224a, type: 3}
-      propertyPath: throwablePrefabs.Array.data[7]
-      value: 
-      objectReference: {fileID: 3090400146159552116, guid: 833f2f65fcc6ec64c937a36ee44e85dc, type: 3}
     - target: {fileID: 6654938033673102911, guid: 2c4f9847306684841a2e38eab38b224a, type: 3}
       propertyPath: m_Name
       value: P_THROWGAME

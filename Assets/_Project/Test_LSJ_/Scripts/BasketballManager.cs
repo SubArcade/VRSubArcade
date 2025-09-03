@@ -1,0 +1,252 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using DG.Tweening;
+using TMPro;
+using UnityEngine;
+
+public class BasketballManager : MonoBehaviour
+{
+    private float time = 0;
+    private int score = 0;
+
+    private int stage = 1;
+    private bool isPlaying = false;
+    private bool isStageStarted = false;
+
+    public float stageDurationTime = 60f;
+    
+    public TextMeshPro scoreText;
+    public TextMeshPro timeText;
+    public TextMeshPro stageText;
+
+    public Transform defaultPos;
+    public Transform leftPos;
+    public Transform rightPos;
+    public Transform backPos;
+    
+    public GameObject basket;
+    public GameObject ballGate;
+    private Coroutine horizontalCoroutine;
+    private Coroutine backMoveCoroutine;
+    
+    private Tween horizontalTween;
+    private Tween backMoveTween;
+    
+    public AudioSource point2Audio;
+    public AudioSource point3Audio;
+    public AudioSource startAudio;
+    public AudioSource endAudio;
+
+    public Transform ballSpawnPos;
+    public GameObject ball;
+    
+
+    private void Start()
+    {
+        defaultPos = transform;
+        leftPos.SetParent(null);
+        rightPos.SetParent(null);
+        backPos.SetParent(null);
+        score = 0;
+        time = 0;
+        stage = 1;
+        scoreText.text  = score.ToString();
+        timeText.text = time.ToString();
+        stageText.text = stage.ToString();
+        //StartCoroutine(BetweenStageTimer());
+    }
+
+    public void InitializeGame()
+    {
+        if (isPlaying == true) return;
+        isPlaying = true;
+        score = 0;
+        time = 0;
+        stage = 1;
+        scoreText.text  = score.ToString();
+        timeText.text = time.ToString();
+        stageText.text = stage.ToString();
+        StartCoroutine(BetweenStageTimer());
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            score += 10;
+            scoreText.text =  score.ToString();
+        }
+    }
+
+    public void ScoreUpdate()
+    {
+        if (isStageStarted == true)
+        {
+            if (time < 20)
+            {
+                score += 3;
+                point3Audio.Play();
+            }
+            else
+            {
+                score += 2;
+                point2Audio.Play();
+            }
+        }
+
+        scoreText.text = score.ToString();
+    }
+
+    IEnumerator StageTimer()
+    {
+        ballGate.transform.DORotate(new Vector3(-15f, 0, 0), 1.0f);
+        stageText.text = stage.ToString();
+        if (stage != 1)
+        {
+            if (stage == 2)
+            {
+                horizontalCoroutine = StartCoroutine(HorizontalMove());
+            }
+            else if (stage == 3)
+            {
+                backMoveCoroutine = StartCoroutine(BackMove());
+            }
+        }
+        isStageStarted = true;
+        time = stageDurationTime;
+        while (time > 0)
+        {
+            time -= Time.deltaTime;
+            timeText.text = string.Format("{0:0.0}", time);
+            yield return null;
+        }
+
+        timeText.text = "0.0";
+        if (score >= 20 * stage)
+        {
+            stage++;
+            StartCoroutine(BetweenStageTimer());
+        }
+        else
+        {
+            isPlaying = false;
+        }
+
+        isStageStarted = false;
+        if (horizontalCoroutine != null)
+        {
+            StopCoroutine(horizontalCoroutine);
+            horizontalTween.Kill();
+            horizontalCoroutine = null;
+        }
+
+        if (backMoveCoroutine != null)
+        {
+            StopCoroutine(backMoveCoroutine);
+            backMoveTween.Kill();
+            backMoveCoroutine = null;
+        }
+        
+        basket.transform.DOMove(defaultPos.position, 1f);
+        endAudio.Play();
+        ballGate.transform.DORotate(new Vector3(75f, 0, 0), 1.0f);
+    }
+
+    IEnumerator BetweenStageTimer()
+    {
+        
+        time = 7f;
+        while (time > 0)
+        {
+            time -= Time.deltaTime;
+            timeText.text = string.Format("{0:0.0}", time);
+            yield return null;
+        }
+
+        timeText.text = "0.0";
+        StartCoroutine(StageTimer());
+    }
+
+    IEnumerator HorizontalMove()
+    {
+        bool needToGoLeft = true;
+        bool needToGoRight = false;
+        bool isMoving = false;
+        float duration = 3f;
+        while (true)
+        {
+            if (isMoving == false)
+            {
+                if (needToGoLeft == true)
+                {
+                    isMoving = true;
+                    horizontalTween = basket.transform.DOMove(leftPos.position, duration).SetEase(Ease.InOutQuad)
+                        .OnComplete(() =>
+                        {
+                            needToGoLeft = false;
+                            needToGoRight = true;
+                            isMoving = false;
+                        });
+                }
+                else if (needToGoRight == true)
+                {
+                    isMoving = true;
+                    horizontalTween = basket.transform.DOMove(rightPos.position, duration).SetEase(Ease.InOutQuad)
+                        .OnComplete(() =>
+                        {
+                            needToGoLeft = true;
+                            needToGoRight = false;
+                            isMoving = false;
+                        });
+                }
+            }
+
+            yield return null;
+        }
+    }
+    
+    IEnumerator BackMove()
+    {
+        bool needToGoBack = true;
+        bool needToGoFront = false;
+        bool isMoving = false;
+        float duration = 3f;
+        while (true)
+        {
+            if (isMoving == false)
+            {
+                if (needToGoBack == true)
+                {
+                    isMoving = true;
+                    backMoveTween = basket.transform.DOMove(backPos.position, duration).SetEase(Ease.InOutQuad)
+                        .OnComplete(() =>
+                        {
+                            needToGoBack = false;
+                            needToGoFront = true;
+                            isMoving = false;
+                        });
+                }
+                else if (needToGoFront == true)
+                {
+                    isMoving = true;
+                    backMoveTween = basket.transform.DOMove(defaultPos.position, duration).SetEase(Ease.InOutQuad)
+                        .OnComplete(() =>
+                        {
+                            needToGoBack = true;
+                            needToGoFront = false;
+                            isMoving = false;
+                        });
+                }
+            }
+
+            yield return null;
+        }
+    }
+
+    public void SpawnBall()
+    {
+        Instantiate(ball, ballSpawnPos.position, ballSpawnPos.rotation);
+    }
+    
+}

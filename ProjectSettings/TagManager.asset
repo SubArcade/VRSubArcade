@@ -3,7 +3,13 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Ground
+  - BasketballTrigger
+  - BasketballTrigger2
+  - BallEndTrigger
+  - BasketballManager
+  - StartButton
   layers:
   - Default
   - TransparentFX
@@ -23,7 +29,7 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - ball
   - 
   - 
   - 

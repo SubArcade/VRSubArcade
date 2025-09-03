@@ -41,7 +41,6 @@ public class Hand : MonoBehaviour
     {
         isFire = context.ReadValueAsButton(); //버튼이 눌렸으면 true , 떨어졌으면 false를 반환해줌
         
-        print($"트리거 눌림 : {isFire}");
         gun.PullTrigger( isFire );
     }
 

@@ -1,32 +1,14 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
 public class Reset : MonoBehaviour
 {
-    private TargetController[] targets;
-
-    void Start()
+    private void OnCollisionEnter(Collision collision)
     {
-        // 씬 안의 모든 TargetController 자동 검색
-        targets = FindObjectsOfType<TargetController>();
-    }
-
-    public void ResetAllTargets()
-    {
-        foreach (var target in targets)
+        if (collision.gameObject.CompareTag("Bullet"))
         {
-            target.ResetTarget();
+            GameManager.Instance.ResetAllTargets();
         }
     }
-
-    void OnCollisionEnter(Collision collision)
-    {
-        ResetAllTargets();
-    }
-
-    //void OnTriggerEnter(Collider other)
-    //{
-    //    ResetAllTargets();
-    //}
-
-
 }

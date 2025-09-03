@@ -31,7 +31,7 @@ public class HittableTarget : MonoBehaviour
             wasHit = true; // 점수는 한 번만 획득하도록 처리
 
             // 1. 점수 획득
-            GameManager.Instance.AddScore(scoreValue);
+            ShootingManager.Instance.AddScore(scoreValue);
             Debug.Log(scoreValue + "점 획득!");
 
             // 2. PlatformMover 비활성화

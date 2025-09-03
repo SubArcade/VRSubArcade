@@ -8,7 +8,7 @@ public class Reset : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Bullet"))
         {
-            GameManager.Instance.ResetAllTargets();
+            ShootingManager.Instance.ResetAllTargets();
         }
     }
 }

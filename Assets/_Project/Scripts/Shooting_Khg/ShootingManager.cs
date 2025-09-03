@@ -2,9 +2,9 @@
 using UnityEngine.UI;
 using System.Collections; // 코루틴 사용을 위해 추가
 
-public class GameManager : MonoBehaviour
+public class ShootingManager : MonoBehaviour
 {
-    public static GameManager Instance { get; private set; }
+    public static ShootingManager Instance { get; private set; }
 
     [Header("점수 설정")]
     [Tooltip("점수를 표시할 UI 텍스트")]
@@ -86,7 +86,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("Score Text가 GameManager에 연결되지 않았습니다.");
+            Debug.LogWarning("Score Text가 ShootingManager에 연결되지 않았습니다.");
         }
     }
 }

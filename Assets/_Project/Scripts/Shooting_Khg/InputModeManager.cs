@@ -19,7 +19,7 @@ public class InputModeManager : MonoBehaviour
         Control_05
         // 필요에 따라 이름을 변경하거나 추가하세요.
     }
-
+     
     [Tooltip("컨트롤러 세트 게임 오브젝트 목록. ControlMode Enum 순서 일치해야 함.")]
     public List<GameObject> controlSetups;
 

@@ -100,7 +100,7 @@ public class BasketballManager : MonoBehaviour
 
     IEnumerator StageTimer()
     {
-        ballGate.transform.DORotate(new Vector3(-15f, 0, 0), 1.0f);
+        ballGate.transform.DORotate(new Vector3(-90f, 0, 0), 1.0f, RotateMode.LocalAxisAdd);
         stageText.text = stage.ToString();
         if (stage != 1)
         {
@@ -150,7 +150,7 @@ public class BasketballManager : MonoBehaviour
         
         basket.transform.DOMove(defaultPos.position, 1f);
         endAudio.Play();
-        ballGate.transform.DORotate(new Vector3(75f, 0, 0), 1.0f);
+        ballGate.transform.DORotate(new Vector3(90f, 0, 0), 1.0f, RotateMode.LocalAxisAdd);
     }
 
     IEnumerator BetweenStageTimer()

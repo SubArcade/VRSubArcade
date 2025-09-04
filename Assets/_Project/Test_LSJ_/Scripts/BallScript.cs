@@ -13,6 +13,7 @@ public class BallScript : MonoBehaviour
     private BasketballManager manager;
     public AudioClip bounce;
     public AudioSource audioSource;
+    private bool isDistroyed = false;
 
 
     private void Awake()
@@ -77,9 +78,13 @@ public class BallScript : MonoBehaviour
         bounceCount++;
         if (other.gameObject.CompareTag("Ground"))
         {
-            count = 0;
-            manager.SpawnBall();
-            Destroy(gameObject);
+            if (isDistroyed == false)
+            {
+                isDistroyed = true;
+                count = 0;
+                manager.SpawnBall();
+                Destroy(gameObject);
+            }
         }
     }
 

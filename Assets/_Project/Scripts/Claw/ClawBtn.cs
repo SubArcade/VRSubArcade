@@ -10,9 +10,6 @@ public class ClawBtn : MonoBehaviour
 {
     [SerializeField] private Animator anim; // 크루 머신 집게 애니메이션Z
     public bool isGrabberActive = true;
-    
-    public void OnHoverEnter(HoverEnterEventArgs args) => Press();
-    public void OnHoverExit(HoverExitEventArgs args) => Release();
 
     [SerializeField] private ClawJoyStick _clawJoySitck;
     [SerializeField] private ClawAnimDriver _clawAnimDriver;
@@ -38,19 +35,12 @@ public class ClawBtn : MonoBehaviour
         }
     }
 
-    public void Release()
-    {
-        print("release");
-    }
-
     public void SetEnabled(bool on)
     {
-        // RotationConstraint 바로 켜거나 끄기
         arm1.GetComponent<RotationConstraint>().enabled = on;
         arm2.GetComponent<RotationConstraint>().enabled = on;
         arm3.GetComponent<RotationConstraint>().enabled = on;
-
-        // true일 때만 1초 후에 각도 고정 실행
+        
         if (on)
         {
             StartCoroutine(ApplyRotationDelayed(0.3f));

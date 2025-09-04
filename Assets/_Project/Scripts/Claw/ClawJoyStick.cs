@@ -58,7 +58,7 @@ public class ClawJoyStick : MonoBehaviour
         nextLocalX.x = Mathf.Clamp(nextLocalX.x, minX, maxX);
         nextLocalZ.z = Mathf.Clamp(nextLocalZ.z, minZ, maxZ);
         
-        if(!isMove)
+        if(!isMove && clawBtn.isGrabberActive)
         {
             if (!Mathf.Approximately(x, 0f))
             {
@@ -150,6 +150,15 @@ public class ClawJoyStick : MonoBehaviour
 
         anim.SetTrigger("Placement");
         isMove = false;
+        //clawBtn.isGrabberActive = true;
+        StartCoroutine(DelayPlacement(1f));
+    }
+    
+    private IEnumerator DelayPlacement(float delay)
+    {
+        yield return new WaitForSeconds(delay);
         clawBtn.isGrabberActive = true;
+
     }
 }
+

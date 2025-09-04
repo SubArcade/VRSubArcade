@@ -19,8 +19,8 @@ public class ButtonAnimation : MonoBehaviour
     private void OnButtonPressed(SelectEnterEventArgs args)
     {
         manager.InitializeGame();
-        transform.DOLocalMoveY(0.86f, 0.3f);
-        DOVirtual.DelayedCall(2f, () => transform.DOLocalMoveY(0.88f, 0.3f));
+        transform.DOLocalMoveY(0.98f, 0.3f);
+        DOVirtual.DelayedCall(2f, () => transform.DOLocalMoveY(1.02f, 0.3f));
         
     }
 }

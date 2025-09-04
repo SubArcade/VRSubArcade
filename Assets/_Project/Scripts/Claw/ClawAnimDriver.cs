@@ -112,7 +112,7 @@ public class ClawAnimDriver : MonoBehaviour
     
     public void OnSetGrabPos()
     {
-        print("onSetGrabPos");
+        //print("onSetGrabPos");
         _clawBtn.SetEnabled(true);   
         ClawUp();
     }

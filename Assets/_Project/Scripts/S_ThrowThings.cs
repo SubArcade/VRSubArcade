@@ -73,7 +73,8 @@ public abstract class ThrowThings : MonoBehaviour
                 Destroy(gameObject);
             }   
         }
-        else if (collision.gameObject.CompareTag("Wall"))
+        else if (collision.gameObject.CompareTag("Wall") || collision.gameObject.CompareTag("Ground"))
+
         {
             hasHit = true;
 

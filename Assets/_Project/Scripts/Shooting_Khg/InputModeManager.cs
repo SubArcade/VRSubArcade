@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections.Generic;
 
 /// <summary>
@@ -12,16 +12,18 @@ public class InputModeManager : MonoBehaviour
     /// </summary>
     public enum ControlMode
     {
-        Primary,
-        Secondary,
-        Tertiary
+        Control_01,
+        Control_02,
+        Control_03,
+        Control_04,
+        Control_05
         // 필요에 따라 이름을 변경하거나 추가하세요.
     }
 
-    [Tooltip("컨트롤러 세트 게임 오브젝트 목록입니다. ControlMode Enum 순서와 반드시 일치해야 합니다. (Primary=0, Secondary=1, ...)")]
+    [Tooltip("컨트롤러 세트 게임 오브젝트 목록. ControlMode Enum 순서 일치해야 함.")]
     public List<GameObject> controlSetups;
 
-    [Tooltip("장면이 시작될 때 활성화할 기본 조작법입니다.")]
+    [Tooltip("장면이 시작될 때 활성화할 기본 컨트롤러.")]
     public ControlMode startingMode;
 
     void Start()
@@ -59,20 +61,28 @@ public class InputModeManager : MonoBehaviour
     }
 
     // --- 테스트용 코드 ---
-    // 에디터에서 숫자 키 1, 2, 3을 눌러 모드를 쉽게 전환할 수 있습니다.
+    // 에디터에서 숫자 키 1, 2, 3을 눌러 모드를 전환.
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            SwitchMode(ControlMode.Primary);
+            SwitchMode(ControlMode.Control_01);
         }
         else if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            SwitchMode(ControlMode.Secondary);
+            SwitchMode(ControlMode.Control_02);
         }
         else if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            SwitchMode(ControlMode.Tertiary);
+            SwitchMode(ControlMode.Control_03);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            SwitchMode(ControlMode.Control_04);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha5))
+        {
+            SwitchMode(ControlMode.Control_05);
         }
     }
 }

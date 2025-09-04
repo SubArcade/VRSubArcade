@@ -67,7 +67,7 @@ public class BasketballManager : MonoBehaviour
         scoreText.text  = score.ToString();
         timeText.text = time.ToString();
         stageText.text = stage.ToString();
-        StartCoroutine(BetweenStageTimer());
+        StartCoroutine(BetweenStageTimer(3f));
     }
 
     private void Update()
@@ -123,7 +123,7 @@ public class BasketballManager : MonoBehaviour
         }
 
         timeText.text = "0.0";
-        if (score >= 20 * stage)
+        if (score >= 10 * stage)
         {
             stage++;
             StartCoroutine(BetweenStageTimer());
@@ -153,10 +153,10 @@ public class BasketballManager : MonoBehaviour
         ballGate.transform.DORotate(new Vector3(90f, 0, 0), 1.0f, RotateMode.LocalAxisAdd);
     }
 
-    IEnumerator BetweenStageTimer()
+    IEnumerator BetweenStageTimer(float timer = 7f)
     {
-        
-        time = 7f;
+
+        time = timer;
         while (time > 0)
         {
             time -= Time.deltaTime;

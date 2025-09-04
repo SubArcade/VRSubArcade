@@ -47,7 +47,6 @@ public class BallScript : MonoBehaviour
                 }
             }
 
-            return;
         }
         else if (other.CompareTag("BasketballTrigger2"))
         {
@@ -61,12 +60,12 @@ public class BallScript : MonoBehaviour
                 }
             }
 
-            return;
         }
         else if (other.CompareTag("BallEndTrigger"))
         {
             audioSource.volume = 1f;
             bounceCount = 0;
+            count = 0;
             //Destroy(gameObject);
         }
     }

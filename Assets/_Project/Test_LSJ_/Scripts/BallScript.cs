@@ -69,6 +69,15 @@ public class BallScript : MonoBehaviour
         }
     }
 
+    public void InitiateBall()
+    {
+        audioSource.volume = 1f;
+        bounceCount = 0;
+        count = 0;
+        trigger1Passed = false;
+        trigger2Passed = false;
+    }
+
     private void OnCollisionEnter(Collision other)
     {
         audioSource.volume = 1 - (0.2f * bounceCount);

@@ -9,6 +9,7 @@ public class Gun : MonoBehaviour
     public Transform muzzlePoint; //총알 위치
     public float bulletSpeed = 50f;
     public Animation anim; 
+    public AudioSource AudioSource;
        
     public float interval; //발사 간 시간간격;
 
@@ -44,6 +45,8 @@ public class Gun : MonoBehaviour
                 // 마지막 발사 시간을 갱신하고 Fire 메서드를 호출합니다.
                 fireTime = Time.time;
                 Fire();
+                AudioSource.PlayOneShot(AudioSource.clip);
+
             }
         }
         else { 

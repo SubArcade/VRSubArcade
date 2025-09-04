@@ -32,7 +32,6 @@ public class HittableTarget : MonoBehaviour
 
             // 1. 점수 획득
             ShootingManager.Instance.AddScore(scoreValue);
-            Debug.Log(scoreValue + "점 획득!");
 
             // 2. PlatformMover 비활성화
             if (platformMover != null)

@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: -2438614797325557576}
   - component: {fileID: 3530178816744037908}
   - component: {fileID: 923841289670230836}
-  m_Layer: 18
+  m_Layer: 0
   m_Name: Basketball
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -391,7 +391,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  m_ThrowVelocityScale: 1.5
+  m_ThrowVelocityScale: 3
   m_ThrowAngularVelocityScale: 1
   m_ForceGravityOnDetach: 0
   m_RetainTransformParent: 1

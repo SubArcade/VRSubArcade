@@ -5847,7 +5847,7 @@ GameObject:
   - component: {fileID: 626659688072669573}
   - component: {fileID: 4302402760084449855}
   - component: {fileID: 8749226328202824852}
-  m_Layer: 19
+  m_Layer: 17
   m_Name: New Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5946,7 +5946,7 @@ GameObject:
   - component: {fileID: 8625223584853810578}
   - component: {fileID: 8338881853268606505}
   - component: {fileID: 2363649609856770954}
-  m_Layer: 19
+  m_Layer: 17
   m_Name: Reset
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9517,7 +9517,7 @@ Transform:
   m_GameObject: {fileID: 7054170346057991678}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7.27, y: 3.8, z: 19.92}
+  m_LocalPosition: {x: -11.79, y: 3.8, z: 19.92}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9535,7 +9535,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_IsGlobal: 0
+  m_IsGlobal: 1
   priority: 0
   blendDistance: 0
   weight: 1
@@ -9557,7 +9557,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 29.44, y: 10.15, z: 14.1}
   m_Center: {x: 0, y: 0, z: 0}

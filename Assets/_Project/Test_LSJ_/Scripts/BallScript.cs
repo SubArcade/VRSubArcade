@@ -41,10 +41,7 @@ public class BallScript : MonoBehaviour
             {
                 trigger1Passed = true;
                 count++;
-                if (count == 2)
-                {
-                    Goal();
-                }
+                
             }
 
         }
@@ -54,7 +51,7 @@ public class BallScript : MonoBehaviour
             {
                 trigger2Passed = true;
                 count++;
-                if (count == 2)
+                if (count == 2 && trigger1Passed == true)
                 {
                     Goal();
                 }
@@ -66,6 +63,8 @@ public class BallScript : MonoBehaviour
             audioSource.volume = 1f;
             bounceCount = 0;
             count = 0;
+            trigger1Passed = false;
+            trigger2Passed = false;
             //Destroy(gameObject);
         }
     }

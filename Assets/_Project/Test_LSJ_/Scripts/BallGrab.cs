@@ -1,7 +1,7 @@
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine;
 
-public class AdjustGrabPosition : MonoBehaviour
+public class BallGrab : MonoBehaviour
 {
     public XRBaseInteractable interactable;
     public float grabOffset = 0.5f;

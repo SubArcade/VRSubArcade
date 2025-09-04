@@ -22,7 +22,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: Neon_Green
   m_Shader: {fileID: 4800000, guid: 0406db5a14f94604a8c57ccfbc9f3b46, type: 3}
-  m_Parent: {fileID: 2100000, guid: b05da81de1d792446b334367b7e81fbf, type: 2}
+  m_Parent: {fileID: 2100000, guid: 27f1a5dea2dd06c469c51c4326384c3f, type: 2}
   m_ModifiedSerializedProperties: 2
   m_ValidKeywords:
   - _EMISSION

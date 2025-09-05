@@ -19,7 +19,6 @@ public class ControlSwap : MonoBehaviour
 
     public void ChangeGun()
     {
-        print("dfsdf");
         InputModeManager.SwitchMode(InputModeManager.ControlMode.Control_02);
     }
 }

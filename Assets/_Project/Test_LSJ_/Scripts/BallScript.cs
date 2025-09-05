@@ -93,6 +93,16 @@ public class BallScript : MonoBehaviour
                 Destroy(gameObject);
             }
         }
+        else if (other.gameObject.CompareTag("Rim"))
+        {
+            
+        }
+        else
+        {
+            count = 0;
+            trigger1Passed = false;
+            trigger2Passed = false;
+        }
     }
 
     private void Goal()

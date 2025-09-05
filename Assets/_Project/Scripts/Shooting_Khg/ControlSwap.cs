@@ -1,6 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.UIElements;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class ControlSwap : MonoBehaviour
 {
@@ -16,6 +19,7 @@ public class ControlSwap : MonoBehaviour
 
     public void ChangeGun()
     {
+        print("dfsdf");
         InputModeManager.SwitchMode(InputModeManager.ControlMode.Control_02);
     }
 }

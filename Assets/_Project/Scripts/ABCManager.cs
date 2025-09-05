@@ -11,28 +11,23 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets
     /// </summary>
     [AddComponentMenu("XR/Action Based Controller Manager")]
     [DefaultExecutionOrder(k_UpdateOrder)]
-    public class ABCManager : MonoBehaviour
+    public class Sub_ActionBaseControllerManager : MonoBehaviour
     {
+        /// <summary>
+        /// Order when instances of type <see cref="ActionBasedControllerManager"/> are updated.
+        /// </summary>
+        /// <remarks>
+        /// Executes before controller components to ensure input processors can be attached
+        /// to input actions and/or bindings before the controller component reads the current
+        /// values of the input actions.
+        /// </remarks>
         public const int k_UpdateOrder = XRInteractionUpdateOrder.k_Controllers - 1;
 
         [Space]
         [Header("Interactors")]
-
-        [SerializeField]
-        [Tooltip("The GameObject containing the interaction group used for direct and distant manipulation.")]
-        XRInteractionGroup m_ManipulationInteractionGroup;
-
         [SerializeField]
         [Tooltip("The GameObject containing the interactor used for direct manipulation.")]
         XRDirectInteractor m_DirectInteractor;
-
-        [SerializeField]
-        [Tooltip("The GameObject containing the interactor used for distant/ray manipulation.")]
-        XRRayInteractor m_RayInteractor;
-
-        [SerializeField]
-        [Tooltip("The GameObject containing the interactor used for teleportation.")]
-        XRRayInteractor m_TeleportInteractor;
 
         [Space]
         [Header("Controller Actions")]
@@ -135,14 +130,6 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets
         // 3. If the Ray interactor is selecting, all locomotion controls are disabled (teleport ray, move, and turn controls) to prevent input collision
         void SetupInteractorEvents()
         {
-            if (m_RayInteractor != null)
-            {
-                m_RayInteractor.selectEntered.AddListener(OnRaySelectEntered);
-                m_RayInteractor.selectExited.AddListener(OnRaySelectExited);
-                m_RayInteractor.uiHoverEntered.AddListener(OnUIHoverEntered);
-                m_RayInteractor.uiHoverExited.AddListener(OnUIHoverExited);
-            }
-
             var teleportModeActivateAction = GetInputAction(m_TeleportModeActivate);
             if (teleportModeActivateAction != null)
             {
@@ -182,12 +169,6 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets
 
         void TeardownInteractorEvents()
         {
-            if (m_RayInteractor != null)
-            {
-                m_RayInteractor.selectEntered.RemoveListener(OnRaySelectEntered);
-                m_RayInteractor.selectExited.RemoveListener(OnRaySelectExited);
-            }
-
             var teleportModeActivateAction = GetInputAction(m_TeleportModeActivate);
             if (teleportModeActivateAction != null)
             {
@@ -228,14 +209,6 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets
         void OnStartTeleport(InputAction.CallbackContext context)
         {
             m_PostponedDeactivateTeleport = false;
-
-            if (m_TeleportInteractor != null)
-                m_TeleportInteractor.gameObject.SetActive(true);
-
-            if (m_RayInteractor != null)
-                m_RayInteractor.gameObject.SetActive(false);
-
-            m_RayInteractorChanged?.Invoke(m_TeleportInteractor);
         }
 
         void OnCancelTeleport(InputAction.CallbackContext context)
@@ -245,12 +218,6 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets
             // the teleport interactor has a chance to complete the teleport if needed.
             // OnAfterInteractionEvents will handle deactivating its GameObject.
             m_PostponedDeactivateTeleport = true;
-
-            if (m_RayInteractor != null)
-                m_RayInteractor.gameObject.SetActive(true);
-
-            m_RayInteractorChanged?.Invoke(m_RayInteractor);
-
         }
 
         void OnStartLocomotion(InputAction.CallbackContext context)
@@ -310,9 +277,6 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets
 
         protected void OnEnable()
         {
-            if (m_TeleportInteractor != null)
-                m_TeleportInteractor.gameObject.SetActive(false);
-
             // Allow the locomotion actions to be refreshed when this is re-enabled.
             // See comments in Start for why we wait until Start to enable/disable locomotion actions.
             if (m_StartCalled)
@@ -341,25 +305,17 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets
             // Called in Start so it is done after the InputActionManager enables all input actions earlier in OnEnable.
             UpdateLocomotionActions();
             UpdateUIActions();
-
-            if (m_ManipulationInteractionGroup == null)
-            {
-                Debug.LogError("Missing required Manipulation Interaction Group reference. Use the Inspector window to assign the XR Interaction Group component reference.", this);
-                return;
-            }
+            
 
             // Ensure interactors are properly set up in the interaction group by adding
             // them if necessary and ordering Direct before Ray interactor.
             var directInteractorIndex = k_InteractorNotInGroup;
             var rayInteractorIndex = k_InteractorNotInGroup;
-            m_ManipulationInteractionGroup.GetGroupMembers(s_GroupMembers);
             for (var i = 0; i < s_GroupMembers.Count; ++i)
             {
                 var groupMember = s_GroupMembers[i];
                 if (ReferenceEquals(groupMember, m_DirectInteractor))
                     directInteractorIndex = i;
-                else if (ReferenceEquals(groupMember, m_RayInteractor))
-                    rayInteractorIndex = i;
             }
 
             if (directInteractorIndex == k_InteractorNotInGroup)
@@ -367,33 +323,7 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets
                 // Must add Direct interactor to group, and make sure it is ordered before the Ray interactor
                 if (rayInteractorIndex == k_InteractorNotInGroup)
                 {
-                    // Must add Ray interactor to group
-                    if (m_DirectInteractor != null)
-                        m_ManipulationInteractionGroup.AddGroupMember(m_DirectInteractor);
-
-                    if (m_RayInteractor != null)
-                        m_ManipulationInteractionGroup.AddGroupMember(m_RayInteractor);
-                }
-                else if (m_DirectInteractor != null)
-                {
-                    m_ManipulationInteractionGroup.MoveGroupMemberTo(m_DirectInteractor, rayInteractorIndex);
-                }
-            }
-            else
-            {
-                if (rayInteractorIndex == k_InteractorNotInGroup)
-                {
-                    // Must add Ray interactor to group
-                    if (m_RayInteractor != null)
-                        m_ManipulationInteractionGroup.AddGroupMember(m_RayInteractor);
-                }
-                else
-                {
-                    // Must make sure Direct interactor is ordered before the Ray interactor
-                    if (rayInteractorIndex < directInteractorIndex)
-                    {
-                        m_ManipulationInteractionGroup.MoveGroupMemberTo(m_DirectInteractor, rayInteractorIndex);
-                    }
+                    
                 }
             }
         }
@@ -408,9 +338,6 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets
 
                 if (m_PostponedDeactivateTeleport)
                 {
-                    if (m_TeleportInteractor != null)
-                        m_TeleportInteractor.gameObject.SetActive(false);
-
                     m_PostponedDeactivateTeleport = false;
                 }
             }

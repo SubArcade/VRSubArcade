@@ -12,6 +12,7 @@ TagManager:
   - StartButton
   - Bullet
   - Wall
+  - Rim
   layers:
   - Default
   - TransparentFX

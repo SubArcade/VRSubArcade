@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.XR.Interaction.Toolkit;
 
 /// <summary>
 /// 여러 VR 컨트롤러/조작법 세트를 관리하고 전환합니다.
@@ -51,12 +52,14 @@ public class InputModeManager : MonoBehaviour
         {
             if (controlSetups[i] != null)
             {
+                SafeDisableGroupsUnder(controlSetups[i]);
                 controlSetups[i].SetActive(false);
             }
         }
 
         // 선택된 컨트롤러 세트만 활성화
         controlSetups[modeIndex].SetActive(true);
+        RebuildGroupsUnder(controlSetups[modeIndex]);
         Debug.Log($"조작법 모드가 '{mode}'(으)로 변경되었습니다.");
     }
 
@@ -85,4 +88,42 @@ public class InputModeManager : MonoBehaviour
             SwitchMode(ControlMode.Control_05);
         }
     }
+    
+    // XRInteractionGroup 비우고 비활성화
+    void SafeDisableGroupsUnder(GameObject rigRoot)
+    {
+        if (!rigRoot) return;
+        var groups = rigRoot.GetComponentsInChildren<XRInteractionGroup>(true);
+
+        foreach (var g in groups)
+        {
+            g.ClearGroupMembers();
+            g.enabled = false;
+            g.ClearGroupMembers();
+        }
+    }
+    
+    // XRInteractionGroup 재구성
+    void RebuildGroupsUnder(GameObject rigRoot)
+    {
+        if (!rigRoot) return;
+        
+        var groups = rigRoot.GetComponentsInChildren<XRInteractionGroup>(true);
+        if (groups.Length == 0) return; // 그룹이 하나도 없으면 아무 것도 안 함
+        
+        var interactors = rigRoot.GetComponentsInChildren<XRBaseInteractor>(true);
+
+        foreach (var g in groups)
+        {
+            g.ClearGroupMembers();
+            g.enabled = true;
+            
+            foreach (var it in interactors)
+            {
+                if (it && it.enabled && it.gameObject.activeInHierarchy)
+                    g.AddGroupMember(it);
+            }
+        }
+    }
+
 }
